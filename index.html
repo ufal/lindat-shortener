@@ -1,21 +1,63 @@
 <html>
     <head>
         <title>shortref.org</title>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
         <script src="./js/main.js"></script>
     <head>
     <body>
-        <form>
-            <label for="url">URL: </label>
-            <input type="text" id="url"/>
-            <label for="title">Title: </label>
-            <input type="text" id="title"/>
-            <label for="email">Report Email: </label>
-            <input type="text" id="email"/>
-            <label for="subprefix">Prefix: </label>
-            <input type="text" id="subprefix"/>
-            <input type="button" id="submit-button" value="submit"/>
-        </form>
-        <p id="response"></p>
+        <div class="text-center" style="min-height: 100%; height: auto !important; margin: 0 auto -100px;">
+        <div class="navbar navbar-default">
+                <div class="container" style="height: 80px;">
+                        <a class="navbar-brand" href="http://shortref.org">
+                                <img alt="shortref.org" src="./images/shortreforg.png">
+                        </a>
+                </div>
+        </div>
+	    <div class="container">
+        	<div class="col-md-8">
+		    <form>
+			<div class="input-group">
+				<div class="input-group-addon" style="font-weight: bold;">URL to short</div>
+				<input type="text" id="url" class="form-control input-lg" />
+			</div>
+			<div class="input-group" style="margin: 20px 0px;">
+				<div class="input-group-addon">Title</div>
+                                <input type="text" id="title" class="form-control" />
+                        </div>
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-6">
+                        	<div class="input-group">
+                                	<div class="input-group-addon">Report Email</div>
+                                	<input type="text" id="email" class="form-control" />
+                        	</div>
+				</div>
+				<div class="col-md-6">
+                        	<div class="input-group">
+                                	<div class="input-group-addon">Prefix</div>
+                                	<input type="text" id="subprefix" class="form-control" />
+                        	</div>
+				</div>
+			</div>
+			<div>
+				<input type="button" id="submit-button" value="Shorten" class="btn btn-default btn-lg" style="background-color: #176c93; color: #FFFFFF; width: 200px;"/>
+			</div>
+		    </form>
+                </div>
+	    </div>
+	    <div class="container">
+                <div class="col-md-8" id="response">
+		</div>
+	    </div>
+        </div>
+	<div style="margin-top: -100px; height: 100px; background-color: #f8f8f8; border-top: 1px solid #e7e7e7;">
+		<div class="container text-center" style="margin-top: 20px;">
+			<div class="col-md-8">
+			<strong style="margin-right: 5px;">Powerd by</strong>
+			<img src="https://lindat.mff.cuni.cz/repository/xmlui/themes/UFAL/images/lindat/lindat-logo.png" width="80" style="filter: grayscale(100%); -webkit-filter: grayscale(100%);" />
+			</div>
+		</div>
+	</div>
     </body>
 </html>
