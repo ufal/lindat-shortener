@@ -15,22 +15,24 @@ jQuery(document).ready(function(){
             dataType: "json",
         }).done(function(data){
                 var rows = "";
-                for (var key in data){
+                /*for (var key in data){
                     if(data.hasOwnProperty(key)){
-                        rows+="<tr>";
-                        rows+="<td>" + key + "</td>";
-                        rows+="<td>" + data[key] + "</td>";
-                        rows+="</tr>";
+			rows+="<div>";
+                        rows+="<span class='col-md-3'>" + key + "</span>";
+                        rows+="<span class='col-md-9'>" + data[key] + "</span>";
+			rows+="</div>";
                     }
-                } 
-                jQuery("#response").html("<table>" + rows + "</table>");
+                }*/
+		rows += "<div class='label label-info'>Shorten Handle</div>";
+		rows += "<div style='font-size: 150%; margin: 20px'><i class='glyphicon glyphicon-link'>&nbsp;</i><strong>" + data['handle'] + "</strong></div>";
+                jQuery("#response").html("<div class='panel panel-info' style='margin: 30px 0px;'><div class='panel-body'>" + rows + "</div></div>");
             })
          .fail(function(jqXHR, textStatus, errorThrown){
                 alert("The request failed.\n" + textStatus + "\n" + errorThrown);
             });
       }else{
         //display error
-        jQuery("#response").html("Please fill all the fields");
+        jQuery("#response").html("<div class='alert alert-danger'><strong>Please fill all the fields</strong></div>");
       }
     });
 });
