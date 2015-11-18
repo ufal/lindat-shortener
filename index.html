@@ -1,63 +1,107 @@
 <html>
-    <head>
-        <title>shortref.org</title>
-        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="./bootstrap/js/bootstrap.min.js"></script>
-        <script src="./js/main.js"></script>
-    <head>
-    <body>
-        <div class="text-center" style="min-height: 100%; height: auto !important; margin: 0 auto -100px;">
-        <div class="navbar navbar-default">
-                <div class="container" style="height: 80px;">
-                        <a class="navbar-brand" href="http://shortref.org">
-                                <img alt="shortref.org" src="./images/shortreforg.png">
-                        </a>
-                </div>
-        </div>
-	    <div class="container">
-        	<div class="col-md-8">
-		    <form>
-			<div class="input-group">
-				<div class="input-group-addon" style="font-weight: bold;">URL to short</div>
-				<input type="text" id="url" class="form-control input-lg" />
-			</div>
-			<div class="input-group" style="margin: 20px 0px;">
-				<div class="input-group-addon">Title</div>
-                                <input type="text" id="title" class="form-control" />
-                        </div>
-			<div class="row" style="margin-bottom: 20px;">
-				<div class="col-md-6">
-                        	<div class="input-group">
-                                	<div class="input-group-addon">Report Email</div>
-                                	<input type="text" id="email" class="form-control" />
-                        	</div>
-				</div>
-				<div class="col-md-6">
-                        	<div class="input-group">
-                                	<div class="input-group-addon">Prefix</div>
-                                	<input type="text" id="subprefix" class="form-control" />
-                        	</div>
-				</div>
-			</div>
-			<div>
-				<input type="button" id="submit-button" value="Shorten" class="btn btn-default btn-lg" style="background-color: #176c93; color: #FFFFFF; width: 200px;"/>
-			</div>
-		    </form>
-                </div>
-	    </div>
-	    <div class="container">
-                <div class="col-md-8" id="response">
-		</div>
-	    </div>
-        </div>
-	<div style="margin-top: -100px; height: 100px; background-color: #f8f8f8; border-top: 1px solid #e7e7e7;">
-		<div class="container text-center" style="margin-top: 20px;">
-			<div class="col-md-8">
-			<strong style="margin-right: 5px;">Powerd by</strong>
-			<img src="https://lindat.mff.cuni.cz/repository/xmlui/themes/UFAL/images/lindat/lindat-logo.png" width="80" style="filter: grayscale(100%); -webkit-filter: grayscale(100%);" />
-			</div>
+<head>
+<title>shortref.org</title>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/main.js"></script>
+<head>
+<body>
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container text-center" style="height: 80px; padding: 10px">
+			<a href="http://shortref.org"> <img alt="shortref.org"
+				src="./images/shortreforg.png">
+			</a>
 		</div>
 	</div>
-    </body>
+
+	<div class="container text-center" style="padding: 100px;">
+		<div>
+			<strong>Create Easy-to-Cite persistent dynamic URLs.</strong> <br>
+			shortref.org uses the <a href="https://www.handle.net/">Handle
+				System<sup>&reg;</sup>
+			</a> to create short persistent identifiers (PIDs). <br /> The service
+			also exposes REST API allowing for other services to automate the
+			creation of shortref.org PIDs.
+		</div>
+		<div>
+			<hr />
+			<div>Fill the URL to be shortened and the needed Metadata and a
+				handle will be generated that you can eaisly use anywhere anytime.</div>
+			<br />
+			<div id="error"></div>
+			<form>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon" style="font-weight: bold;">URL
+							to short</div>
+						<input type="text" id="url" class="form-control input-lg"
+							tabindex="1" /> <span class="input-group-btn">
+							<button class="btn btn-lg" type="button" id="submit-button" data-loading-text="Processing..."
+								style="background-color: #176c93; color: #FFFFFF;" tabindex="5">Shorten</button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Title</div>
+						<input type="text" id="title" class="form-control" tabindex="2" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Report Email</div>
+						<input type="text" id="email" class="form-control" tabindex="3" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Prefix</div>
+						<input type="text" id="subprefix" class="form-control"
+							tabindex="4" />
+					</div>
+				</div>
+			</form>
+			<hr />
+			<div id="response"></div>
+		</div>
+	</div>
+
+	<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container text-center" style="height: 80px; padding: 15px">
+			<strong style="margin-right: 5px;">Powerd by</strong> <a
+				href="http://lindat.mff.cuni.cz"> <img
+				src="https://lindat.mff.cuni.cz/repository/xmlui/themes/UFAL/images/lindat/lindat-logo.png"
+				width="80" border="0"
+				style="filter: grayscale(100%); -webkit-filter: grayscale(100%);" />
+			</a>
+		</div>
+	</div>
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+		var _paq = _paq || [];
+		_paq.push([ 'trackPageView' ]);
+		_paq.push([ 'enableLinkTracking' ]);
+		(function() {
+			var u = "//ufal.mff.cuni.cz/piwik/";
+			_paq.push([ 'setTrackerUrl', u + 'piwik.php' ]);
+			_paq.push([ 'setSiteId', 6 ]);
+			var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+			g.type = 'text/javascript';
+			g.async = true;
+			g.defer = true;
+			g.src = u + 'piwik.js';
+			s.parentNode.insertBefore(g, s);
+		})();
+	</script>
+	<noscript>
+		<p>
+			<img src="//ufal.mff.cuni.cz/piwik/piwik.php?idsite=6" style="border: 0;" alt="" />
+		</p>
+	</noscript>
+	<!-- End Piwik Code -->
+
+</body>
 </html>
