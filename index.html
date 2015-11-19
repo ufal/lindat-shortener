@@ -2,13 +2,14 @@
 <head>
 <title>shortref.org</title>
 <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="./bootstrap/js/bootstrap.min.js"></script>
 <script src="./js/main.js"></script>
 <head>
 <body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
-	<div id="header" class="navbar navbar-default navbar-fixed-top" style="background-color: #176c93; display: table; width: 100%; height: 180px; position: absolute; min-height: 80px;">
+	<div id="header" class="navbar navbar-default navbar-fixed-top" style="background-color: #176c93; display: table; width: 100%; height: 90px;">
 		<div class="container text-center" style="display: table-cell; vertical-align: bottom; padding: 10px">
 			<a href="http://shortref.org">
 				<img alt="shortref.org" src="./images/shortreforg.png" height="60px">
@@ -16,12 +17,15 @@
 		</div>
 	</div>
 	
-	<div class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 100px 0px; height: 100%; width: 100%; display: table;">
-		<div style="height: 100%; width:100%; display: table-cell; vertical-align: middle; margin: 10px;">
+	<div class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 130px 0px 50px 0px; width: 100%;">
+		<div style="width:100%;">
 			<p>
 				<strong style="font-size: 180%;">
 					CREATE EASY-TO-CITE<BR/>PERSISTENT DYNAMIC URLS				
 				</strong>
+			</p>
+			<p>
+				<i class="fa fa-link fa-4x"></i>
 			</p>
 			<p style="color: #808080; font-size: 150%;">
 			Forget the lengthly links of your data and resources
@@ -32,26 +36,23 @@
 			</p>
 			<p style="color: #808080; font-size: 110%;">
 			Specially design for researchers<br>Share your data sets, dynamic queries, customized graphs
-			<br>			
-			and don't worry about broken links
 			</p>
 			<p style="margin-top: 20px;">
 			<small style="color: #808080; ">
 			This is a free service provided by <a href="http://lindat.mff.cuni.cz">LINDAT / CLARIN</a>
 			</small>
-			</p>			
-						
+			</p>
 		</div>	
 	</div>
 
-	<div class="container text-center" style="padding: 100px 100px; height: 100%; width: 100%; background-color: #176c93;">
-		<div class="thumbnail" style="padding: 20px; background-color: #F7F7F7;">
+	<div class="container text-center" style="padding: 60px 100px 40px 100px; width: 100%; background-color: #176c93;">
+		<div class="thumbnail" style="padding: 20px 50px; background-color: #F7F7F7;">
 			<p id="error"></p>
 			<p class="text-info">Fill the URL to be shortened</p>
 			<form>
 				<div class="form-group">
 					<div class="input-group">
-						<div class="input-group-addon" style="font-weight: bold; background-color: #176c93; border-color: #176c93; color: #FFFFFF;">URL
+						<div class="input-group-addon" style="background-color: #176c93; border-color: #176c93; color: #FFFFFF;">URL
 							to short</div>
 						<input type="text" id="url" class="form-control input-lg"
 							tabindex="1" /> 
@@ -82,39 +83,108 @@
 				</div>
 				<div class="form-group">
 							<button class="btn btn-lg" type="button" id="submit-button" data-loading-text="Processing..."
-								style="background-color: #176c93; color: #FFFFFF;" tabindex="5">Shorten</button>
+								style="background-color: #176c93; color: #FFFFFF; font-size: 120%;" tabindex="5">SHORTEN</button>
 				</div>				
 			</form>
 		</div>
 	</div>
 	
-	<div id="example" class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 100px 0px; height: 100%; width: 100%; display: table;">
-		<div style="height: 100%; width:100%; display: table-cell; vertical-align: middle; margin: 10px;">
-			<p>
-			Examples
-			</p>
+	<div id="example" class="container text-center" style="color: #404040; background-color: #F7F7F7; margin: 0px; padding: 100px 0px; width: 100%;">
+		<div class="container">
+			<div class="col-md-4 text-center">
+				<h4>Who can use this service ?</h4>
+				<i class="fa fa-users fa-3x"></i>
+				<div style="padding: 10px;">
+					This service is targeted towards the research community to provide a scheme 
+					for reliable citations of the data. Shortref.org is a simple solution to generate
+					easily citable links to your dynamic research contents (results of queries,
+					visualisation of data sets, interactive graphs, etc).					
+				</div>
+			</div>
+			<div class="col-md-4 text-center">
+				<h4>Its Persistent</h4>
+				<i class="fa fa-hourglass-start fa-3x"></i>
+				<div style="padding: 10px;">
+					Unlike other services, we just not generate a short URL but a persistent identifier.
+					Automatically inherits all the features provided by the Handle System: reliable, scalable,
+					flexible, trusted, open architecture and transparent.  
+				</div>
+			</div>
+			<div class="col-md-4 text-center">
+				<h4>If the target link is broken?</h4>
+				<i class="fa fa-chain-broken  fa-3x"></i>
+				<div style="padding: 10px;">
+					With the power of metadata, even if the target link is broken or no more available,
+					a user can see the metadata. Just use the "noredirec" parameter in the
+					URL and we will display the associated metadata.
+					<div style="margin: 5px;">
+						<pre>http://hdl.handle.net/ABC?noredirect</pre>
+					</div>
+				</div>
+			</div>					
+			
 		</div>
-	</div>
-
-	<div id="example" class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 100px 0px; height: 100%; width: 100%; display: table;">
-		<div style="height: 100%; width:100%; display: table-cell; vertical-align: middle; margin: 10px;">
-			<div class="text-center" style="width: 100%; background-color: #176c93; padding: 50px;">
-				<span style="width: 200px;">
-					Check our repository.
-				</span>
+		<hr>
+		<div class="container">
+			<div class="col-md-offset-2 col-md-8 text-center">
+				<h4>REST API</h4>
+				<i class="fa fa-cogs fa-3x"></i>
+				<div style="padding: 10px;">
+				Accessing shortref.org using the REST API endpoint provides flexiblity for other 
+				services to create shortref.org PIDs. The interaction can be hidden behind the graphical interface of the particular service.
+				</div>
+				<div style="margin: 5px;">
+				<strong>REST API endpoint</strong>
+				<pre>https://lindat.mff.cuni.cz/services/shortener/api/v1/handles</pre>
+				<strong>Parameters</strong>
+				<pre><strong>url:</strong> The URL you want to shortened
+<strong>title:</strong> A description of the resource
+<strong>reportemail:</strong> Contact email to use in case of a broken link
+<strong>subprefix:</strong> A short prefix to customise the generated handle</pre>
+				</div>				
 			</div>
 		</div>
 	</div>
 
+	<div class="container text-center" style="background-color: #176c93; margin: 0px; padding-top: 20px; width: 100%;">
+		<div class="col-md-offset-3 col-md-2">
+			<div class="thumbnail" style="height: 120px; background-color: #F7F7F7;">
+				<a href="https://lindat.mff.cuni.cz/repository" style="color: #176c93">
+					<i class="fa fa-cloud fa-5x"></i>
+					<div>LINDAT/CLARIN Repository</div>
+				</a>							
+			</div>						
+		</div>				
+		<div class="col-md-2">
+			<div class="thumbnail" style="height: 120px; background-color: #F7F7F7;">
+				<a href="https://github.com/ufal/lindat-dspace" style="color: #176c93">
+					<i class="fa fa-github fa-5x"></i>
+					<div>LINDAT/CLARIN github</div>
+				</a>							
+			</div>						
+		</div>
+		<div class="col-md-2">
+			<div class="thumbnail" style="height: 120px; background-color: #F7F7F7;">
+				<a href="https://twitter.com/LindatClarin" style="color: #176c93">
+					<i class="fa fa-twitter fa-5x"></i>
+					<div>Follow us: @LindatClarin</div>
+				</a>
+			</div>
+		</div>			
+	</div>
+
 	
-	<div id="footer" class="navbar navbar-default navbar-fixed-bottom" style="margin: 0px; height: 80px;">
-		<div class="container text-center" style="margin: 17px;">
+	<div id="footer" class="navbar navbar-default" style="margin: 0px; height: 100px; border-radius: 0px; width: 100%; padding: 10px;">
+		<div class="container text-center">
 			<strong style="margin-right: 5px;">Powerd by</strong> <a
 				href="http://lindat.mff.cuni.cz"> <img
 				src="https://lindat.mff.cuni.cz/repository/xmlui/themes/UFAL/images/lindat/lindat-logo.png"
 				width="80" border="0"
 				style="filter: grayscale(100%); -webkit-filter: grayscale(100%);" />
 			</a>
+			<div style="margin: 10px; font-weight: bold;">
+				<small>Copyright (c) 2015 UFAL MFF UK. All rights reserved.</small>
+			</div>
 		</div>
 	</div>
 	

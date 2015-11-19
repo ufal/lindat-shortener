@@ -2,21 +2,6 @@ jQuery(document)
 		.ready(
 				function() {
 					
-					jQuery(window).scroll(function(){
-						var hd = jQuery("#header");
-						var scroll = jQuery(window).scrollTop();
-						
-						if (scroll >= 100) {
-							hd.css("height", "80px")
-							hd.css("position", "fixed");
-						} else {
-							hd.css("height", "180px")
-							hd.css("position", "absolute");
-						}
-												
-						
-					});
-
 					jQuery("#submit-button")
 							.click(
 									function() {
@@ -92,7 +77,7 @@ jQuery(document)
 											jQuery("#error")
 													.html(
 															"<div class='text-danger' style='font-size: 100%; padding: 10px;'>" +
-															"<strong>* Please fill all the fields</strong>");
+															"<strong>* Please fill the required fields</strong>");
 											$btn.button('reset');
 										}
 									});
