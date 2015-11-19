@@ -1,6 +1,22 @@
 jQuery(document)
 		.ready(
 				function() {
+					
+					jQuery(window).scroll(function(){
+						var hd = jQuery("#header");
+						var scroll = jQuery(window).scrollTop();
+						
+						if (scroll >= 100) {
+							hd.css("height", "80px")
+							hd.css("position", "fixed");
+						} else {
+							hd.css("height", "180px")
+							hd.css("position", "absolute");
+						}
+												
+						
+					});
+
 					jQuery("#submit-button")
 							.click(
 									function() {
@@ -64,7 +80,7 @@ jQuery(document)
 																	textStatus,
 																	errorThrown) {
 																jQuery("#error")
-																.html("<div class='alert alert-danger' style='font-size: 120%;'>The request failed.<br>"
+																.html("<div class='text-danger' style='font-size: 100%; padding: 10px;'>The request failed.<br>"
 																		+ textStatus
 																		+ "<br>"
 																		+ errorThrown
@@ -75,7 +91,8 @@ jQuery(document)
 											// display error
 											jQuery("#error")
 													.html(
-															"<div class='alert alert-danger' style='font-size: 120%;'>Please fill all the fields</strong>");
+															"<div class='text-danger' style='font-size: 100%; padding: 10px;'>" +
+															"<strong>* Please fill all the fields</strong>");
 											$btn.button('reset');
 										}
 									});
