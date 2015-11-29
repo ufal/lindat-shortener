@@ -9,26 +9,24 @@
 <head>
 <body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 
-	<div id="header" class="navbar navbar-default navbar-fixed-top" style="background-color: #176c93; display: table; width: 100%; height: 90px;">
+	<div id="header" class="navbar navbar-default navbar-fixed-top" style="background-color: #176c93; display: table; width: 100%; height: 120px;">
 		<div class="container text-center" style="display: table-cell; vertical-align: bottom; padding: 10px">
 			<a href="http://shortref.org">
-				<img alt="shortref.org" src="./images/shortreforg.png" height="60px">
+				<img alt="shortref.org" src="./images/shortreforg.png" height="100px">
 			</a>
 		</div>
 	</div>
 	
-	<div class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 130px 0px 50px 0px; width: 100%;">
+	<div class="container text-center" style="background-color: #F7F7F7; margin: 0px; padding: 150px 0px 50px 0px; width: 100%;">
 		<div style="width:100%;">
 			<p>
 				<strong style="font-size: 180%;">
-					CREATE EASY-TO-CITE<BR/>PERSISTENT DYNAMIC URLS				
+					Easily Cite your data and resources<BR>
+					Forget the lengthly links
 				</strong>
 			</p>
 			<p>
 				<i class="fa fa-link fa-4x"></i>
-			</p>
-			<p style="color: #808080; font-size: 150%;">
-			Forget the lengthly links of your data and resources
 			</p>
 			<p style="color: #808080; font-size: 110%;">
 			More than a URL shortener -  We use the <a href="https://www.handle.net/">Handle System</a><sup>&reg;</sup>
@@ -48,14 +46,12 @@
 	<div class="container text-center" style="padding: 60px 100px 40px 100px; width: 100%; background-color: #176c93;">
 		<div class="thumbnail" style="padding: 20px 50px; background-color: #F7F7F7;">
 			<p id="error"></p>
-			<p class="text-info">Fill the URL to be shortened</p>
 			<form>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon" style="background-color: #176c93; border-color: #176c93; color: #FFFFFF;">URL
 							to short</div>
-						<input type="text" id="url" class="form-control input-lg"
-							tabindex="1" /> 
+						<input type="text" id="url" class="form-control input-lg" tabindex="1" placeholder="The URL to be shortened" /> 
 					</div>
 				</div>
 				<div id="response"></div>				
@@ -65,20 +61,19 @@
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Title</div>
-						<input type="text" id="title" class="form-control" tabindex="2" />
+						<input type="text" id="title" class="form-control" tabindex="2" placeholder="Describe the resource that points to the URL" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Report Email</div>
-						<input type="text" id="email" class="form-control" tabindex="3" />
+						<input type="text" id="email" class="form-control" tabindex="3" placeholder="In case of broken link users will be able to contact you on this email" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Prefix</div>
-						<input type="text" id="subprefix" class="form-control"
-							tabindex="4" />
+						<input type="text" id="subprefix" class="form-control" tabindex="4" placeholder="Customize the generated link with custom prefix" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -88,8 +83,17 @@
 			</form>
 		</div>
 	</div>
-	
-	<div id="example" class="container text-center" style="color: #404040; background-color: #F7F7F7; margin: 0px; padding: 100px 0px; width: 100%;">
+
+	<div class="container text-center" style="color: #404040; background-color: #F7F7F7; margin: 0px; padding: 50px 0px 100px 0px; width: 100%;">
+		<div class="container">
+			<i class="fa fa-clock-o fa-2x"></i>
+			<h4>Recently generated shortrefs</h4>		
+			<div id="recently-generated">
+				<table class="table table-striped table-condensed" style="font-size: 90%;">
+				</table>
+			</div>
+		</div>		
+		<hr>	
 		<div class="container">
 			<div class="col-md-4 text-center">
 				<h4>Who can use this service ?</h4>
@@ -118,7 +122,7 @@
 					a user can see the metadata. Just use the "noredirec" parameter in the
 					URL and we will display the associated metadata.
 					<div style="margin: 5px;">
-						<pre>http://hdl.handle.net/ABC?noredirect</pre>
+						<pre><a href="http://hdl.handle.net/11346/PMLTQ-RXYK?noredirect">http://hdl.handle.net/11346/PMLTQ-RXYK?noredirect</a></pre>
 					</div>
 				</div>
 			</div>					
