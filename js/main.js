@@ -6,15 +6,15 @@ jQuery(document).ready(
                 {
                     type: 'GET',
                     url: "https://lindat.mff.cuni.cz/services/shortener/api/v1/handles",
+		    //desc is the default, just to be sure...
+		    data: {limit:5, order:"desc"},
                     contentType: "application/json",
                     dataType: "json"
                 })
             .done(
                 function (data) {
-                    var j = 0;
                     var result = jQuery("#recently-generated table");
-                    for (var i = data.length - 1; i >= 0; i--) {
-                        if (j++ == 5) break;
+                    for (var i = 0; i < data.length; i++) {
                         var sr = data[i];
                         var time = sr['submitdate'].replace(/[TZ]/g, " ");
                         result.append("<tr><td class='text-center'>"
