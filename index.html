@@ -77,6 +77,24 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">DataSet Name</div>
+						<input type="text" id="datasetName" class="form-control" tabindex="4" placeholder="Name of the dataset the link pointed to" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">DataSet Version</div>
+						<input type="text" id="datasetVersion" class="form-control" tabindex="4" placeholder="Add the version of the dataset" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Query</div>
+						<input type="text" id="query" class="form-control" tabindex="4" placeholder="The query associated with the link (if any)" />
+					</div>
+				</div>				
+				<div class="form-group">
 							<button class="btn btn-lg" type="button" id="submit-button" data-loading-text="Processing..."
 								style="background-color: #176c93; color: #FFFFFF; font-size: 120%;" tabindex="5">SHORTEN</button>
 				</div>				
@@ -144,7 +162,10 @@
 				<pre><strong>url:</strong> The URL you want to shortened
 <strong>title:</strong> A description of the resource
 <strong>reportemail:</strong> Contact email to use in case of a broken link
-<strong>subprefix:</strong> A short prefix to customise the generated handle</pre>
+<strong>subprefix:</strong> A short prefix to customise the generated handle
+<strong>datasetName:</strong> Name of the dataset (if the link is pointing to a dataset)
+<strong>datasetVersion:</strong> Version of the dataset, in case multiple versions are available.
+<strong>query:</strong> If the link is a query assocaited with an online tool.</pre>
 				</div>				
 			</div>
 		</div>

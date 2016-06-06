@@ -17,11 +17,27 @@ jQuery(document).ready(
                     for (var i = 0; i < data.length; i++) {
                         var sr = data[i];
                         var time = sr['submitdate'].replace(/[TZ]/g, " ");
-                        result.append("<tr><td class='text-center'>"
-                            + sr['title'] + "<br>"
-                            + "<a href='" + sr['handle'] + "' target='_blank'>" + sr['handle'] + "</a><br>"
-                            + "<i class=\"fa fa-clock-o\"></i> <em>created at " + time + "</em>"
-                            + "</td></tr>");
+                        var str =
+                        	"<tr>" +
+                        		"<td class='text-center'>" + sr['title'] + "<br>";
+                        	
+                        	if(sr['datasetName']!=null) {
+                        		str += sr['datasetName'];
+                        		if(sr['datasetVersion']!=null) {
+                        			str += " - " + sr['datasetVersion'] + "<br>";
+                        		}else{
+                        			str += "<br>";
+                        		}                        		
+                        	}
+                        	
+                        	if(sr['query']!=null) {
+                        		str += "Associated Query: " + sr['query'] + "<br>";
+                        	}                        	
+                        	
+                        	str +=	"<a href='" + sr['handle'] + "' target='_blank'>" + sr['handle'] + "</a><br>" +
+                        			"<i class=\"fa fa-clock-o\"></i> <em>created at " + time + "</em>" +
+                        	"</td></tr>";
+                        result.append(str);
                     }
                 }
             );
@@ -37,8 +53,10 @@ jQuery(document).ready(
                     var url = jQuery("#url").val();
                     var email = jQuery("#email").val();
                     var title = jQuery("#title").val();
-                    var subprefix = jQuery("#subprefix")
-                        .val();
+                    var subprefix = jQuery("#subprefix").val();
+                    var datasetName = jQuery("#datasetName").val();
+                    var datasetVersion = jQuery("#datasetVersion").val();
+                    var query = jQuery("#query").val();
                     if (url && email && title) {
                         // send and display
                         jQuery
@@ -51,7 +69,10 @@ jQuery(document).ready(
                                             url: url,
                                             title: title,
                                             reportemail: email,
-                                            subprefix: subprefix
+                                            subprefix: subprefix,
+                                            datasetName: datasetName,
+                                            datasetVersion: datasetVersion,
+                                            query: query                    
                                         }),
                                     contentType: "application/json",
                                     dataType: "json"
