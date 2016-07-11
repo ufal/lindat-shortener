@@ -1,6 +1,19 @@
 /* global jQuery */
 jQuery(document).ready(
     function () {
+    	
+    	
+    	jQuery("#url").focus();
+    	
+    	jQuery('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    		  var target = $(e.target).attr("href") // activated tab
+    		  if(target=="#update") {
+    			  jQuery("#handle").focus();
+    		  } else {
+    			  jQuery("#url").focus();
+    		  }
+    	});
+    	
         jQuery
             .ajax(
                 {
@@ -80,23 +93,13 @@ jQuery(document).ready(
                             .done(
                                 function (data) {
                                     var rows = "";
-                                    /*
-                                     * for (var key
-                                     * in data){
-                                     * if(data.hasOwnProperty(key)){
-                                     * rows+="<div>";
-                                     * rows+="<span
-                                     * class='col-md-3'>" +
-                                     * key + "</span>";
-                                     * rows+="<span
-                                     * class='col-md-9'>" +
-                                     * data[key] + "</span>";
-                                     * rows+="</div>"; } }
-                                     */
                                     rows += "<div class='label label-info'>Shorten Handle</div>";
                                     rows += "<div style='font-size: 150%; margin: 10px'><i class='glyphicon glyphicon-link'>&nbsp;</i><strong>"
                                         + data['handle']
                                         + "</strong></div>";
+                                    rows += "<div style='font-size: 100%; margin: 10px;'>Remember the token "
+                                   	 +  "<strong>" + data["token"] + "</strong> to update the handle in future."
+                                   		"</div>";                                    
                                     jQuery(
                                         "#response")
                                         .html(
@@ -126,5 +129,72 @@ jQuery(document).ready(
                         btn.button('reset');
                     }
                 });
+        
+        
+        jQuery("#update-button")
+        .click(
+            function () {
+                jQuery("#update-error").html("");
+                jQuery("#update-response").html("");
+
+                var btn = jQuery(this).button('loading');
+
+                var url = jQuery("#newUrl").val();
+                var handle = jQuery("#handle").val();
+                var token = jQuery("#token").val();
+                if (url && handle && token) {
+                    // send and display
+                    jQuery
+                        .ajax(
+                            {
+                                type: 'PUT',
+                                url: "https://lindat.mff.cuni.cz/services/shortener/api/v1/handles",
+                                data: JSON
+                                    .stringify({
+                                        url: url,
+                                        handle: handle,
+                                        token: token                    
+                                    }),
+                                contentType: "application/json",
+                                dataType: "json"
+                            })
+                        .done(
+                            function (data) {
+                                var rows = "";
+                                rows += "<div style='font-size: 150%; margin: 10px'><i class='glyphicon glyphicon-link'>&nbsp;</i><strong>"
+                                     + data['handle']
+                                     + "</strong></div>";
+                                rows += "<div style='font-size: 100%; margin: 10px;'>Handle Updated. Remember the token "
+                                  	 +  "<strong>" + data["token"] + "</strong> to update the handle in future."
+                                  		"</div>";
+                                jQuery(
+                                    "#update-response")
+                                    .html(
+                                        "<div class='alert alert-success'>"
+                                        + rows
+                                        + "</div>");
+                                btn.button('reset');
+                            })
+                        .fail(
+                            function (jqXHR,
+                                      textStatus,
+                                      errorThrown) {
+                                jQuery("#update-error")
+                                    .html("<div class='text-danger' style='font-size: 100%; padding: 10px;'>The request failed.<br>"
+                                        + textStatus
+                                        + "<br>"
+                                        + errorThrown
+                                        + "</div>");
+                                btn.button('reset');
+                            });
+                } else {
+                    // display error
+                    jQuery("#update-error")
+                        .html(
+                            "<div class='text-danger' style='font-size: 100%; padding: 10px;'>" +
+                            "<strong>* Please fill the required fields</strong>");
+                    btn.button('reset');
+                }
+            });        
     }
 );

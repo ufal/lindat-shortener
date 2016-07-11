@@ -44,14 +44,21 @@
 	</div>
 
 	<div class="container text-center" style="padding: 60px 100px 40px 100px; width: 100%; background-color: #176c93;">
-		<div class="thumbnail" style="padding: 20px 50px; background-color: #F7F7F7;">
+	<div class="thumbnail" style="padding: 20px 50px; background-color: #FFFFFF;">
+		<ul class="nav nav-tabs" role="tablist" style="font-size: 90%; font-weight: bold;">
+			<li role="presentation" class="active"><a id="generate-tab-btn" href="#generate" aria-controls="generate" role="tab" data-toggle="tab">Generate</a></li>
+			<li role="presentation"><a id="update-tab-btn" href="#update" aria-controls="update" role="tab" data-toggle="tab">Update</a></li>
+		</ul>
+		
+		<div class="tab-content" style="margin-top: 30px;">
+		<div role="tabpanel" class="tab-pane active" id="generate">		
 			<p id="error"></p>
 			<form>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon" style="background-color: #176c93; border-color: #176c93; color: #FFFFFF;">
 							URL to shorten</div>
-						<input type="text" id="url" class="form-control input-lg" tabindex="1" placeholder="The URL to be shortened" /> 
+						<input type="text" id="url" class="form-control input-lg" placeholder="The URL to be shortened" /> 
 					</div>
 				</div>
 				<div id="response"></div>				
@@ -61,45 +68,76 @@
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Title</div>
-						<input type="text" id="title" class="form-control" tabindex="2" placeholder="Describe the resource that points to the URL" />
+						<input type="text" id="title" class="form-control" placeholder="Describe the resource that points to the URL" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Report Email</div>
-						<input type="text" id="email" class="form-control" tabindex="3" placeholder="In case of broken link users will be able to contact you on this email" />
+						<input type="text" id="email" class="form-control" placeholder="In case of broken link users will be able to contact you on this email" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Prefix</div>
-						<input type="text" id="subprefix" class="form-control" tabindex="4" placeholder="Customize the generated link with custom prefix" />
+						<input type="text" id="subprefix" class="form-control" placeholder="Customize the generated link with custom prefix" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">DataSet Name</div>
-						<input type="text" id="datasetName" class="form-control" tabindex="4" placeholder="Name of the dataset the link pointed to" />
+						<input type="text" id="datasetName" class="form-control" placeholder="Name of the dataset the link pointed to" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">DataSet Version</div>
-						<input type="text" id="datasetVersion" class="form-control" tabindex="4" placeholder="Add the version of the dataset" />
+						<input type="text" id="datasetVersion" class="form-control" placeholder="Add the version of the dataset" />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Query</div>
-						<input type="text" id="query" class="form-control" tabindex="4" placeholder="The query associated with the link (if any)" />
+						<input type="text" id="query" class="form-control" placeholder="The query associated with the link (if any)" />
 					</div>
 				</div>				
 				<div class="form-group">
 							<button class="btn btn-lg" type="button" id="submit-button" data-loading-text="Processing..."
-								style="background-color: #176c93; color: #FFFFFF; font-size: 120%;" tabindex="5">SHORTEN</button>
+								style="background-color: #176c93; color: #FFFFFF; font-size: 120%;" >SHORTEN</button>
 				</div>				
 			</form>
 		</div>
+		
+		<div role="tabpanel" class="tab-pane" id="update">		
+			<p id="update-error"></p>
+			<form>
+				<div id="update-response"></div>				
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Handle/PID</div>
+						<input type="text" id="handle" class="form-control" placeholder="The Handle/PID you want to update." />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Token</div>
+						<input type="text" id="token" class="form-control" placeholder="The token returned during shortening of the URL" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon" style="background-color: #176c93; border-color: #176c93; color: #FFFFFF;">New URL</div>
+						<input type="text" id="newUrl" class="form-control input-lg" placeholder="The new URL you want to associate with the handle" />
+					</div>
+				</div>			
+				<div class="form-group">
+							<button class="btn btn-lg" type="button" id="update-button" data-loading-text="Processing..."
+								style="background-color: #176c93; color: #FFFFFF; font-size: 120%;" >UPDATE</button>
+				</div>				
+			</form>
+		</div>		
+		</div>
+	</div>
 	</div>
 
 	<div class="container text-center" style="color: #404040; background-color: #F7F7F7; margin: 0px; padding: 50px 0px 100px 0px; width: 100%;">
