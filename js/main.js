@@ -26,9 +26,17 @@ jQuery(document).ready(
                 })
             .done(
                 function (data) {
+                    // Sort data by submitdate (newest to oldest) and take the first 5
+                    data.sort(function(a, b) {
+                        return new Date(b.submitdate) - new Date(a.submitdate);
+                    });
+                    
+                    // Limit to 5 newest entries
+                    var limitedData = data.slice(0, 5);
+                    
                     var result = jQuery("#recently-generated table");
-                    for (var i = 0; i < data.length; i++) {
-                        var sr = data[i];
+                    for (var i = 0; i < limitedData.length; i++) {
+                        var sr = limitedData[i];
                         var time = sr['submitdate'].replace(/[TZ]/g, " ");
                         var str =
                         	"<tr>" +
